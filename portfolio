@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sheena Krisitne Artugue - Portfolio</title>
+    <!-- Google Fonts: Feminine and Soft -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Dancing+Script:wght@400;500;600&family=Cormorant+Garamond:wght@300;400;500&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind CSS configuration for custom colors and font
+        tailwind.config = {
+            darkMode: 'class', // Enable dark mode based on 'dark' class on <html>
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Quicksand', 'sans-serif'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                        'script': ['Parisienne', 'cursive'],
+                        'dancing-script': ['Dancing Script', 'cursive'],
+                    },
+                    colors: {
+                        'light-bg': '#FFF0F0', // Soft blush pink
+                        'light-text': '#5C4A42', // Warm brown
+                        'light-secondary-text': '#7D6D66', // Muted brown
+                        'light-card-bg': '#FFF5F5', // Pinkish white
+                        'light-border': '#E2C2C2', // Soft pink border
+                        'accent': '#D4A59A', // Muted terracotta
+                        'accent-dark': '#B0877D', // Darker terracotta
+
+                        'dark-bg': '#1a202c', // Dark gray (similar to slate 900)
+                        'dark-text': '#f8fafc', // Very light gray
+                        'dark-secondary-text': '#cbd5e1', // Slate 300
+                        'dark-card-bg': '#2d3748', // Darker gray
+                        'dark-border': '#4a5568', // Gray 600
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: 0 },
+                            '100%': { opacity: 1 },
+                        },
+                        slideUp: {
+                            '0%': { opacity: 0, transform: 'translateY(20px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        svg.hero-pattern {
+            filter: opacity(0.15) drop-shadow(0 0 8px rgba(212,165,154,0.1));
+        }
+        @layer base {
+            body {
+                @apply font-sans bg-light-bg text-light-text transition-colors duration-300;
+            }
+            .dark body {
+                @apply bg-dark-bg text-dark-text;
+            }
+            .section-heading {
+                @apply text-4xl md:text-5xl font-dancing-script text-center mb-16 relative;
+                font-weight: 500;
+                letter-spacing: 2px;
+            }
+            .section-heading::after {
+                content: '';
+                @apply absolute bottom-[-1rem] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-accent rounded-full;
+            }
+            .dark .section-heading::after {
+                @apply bg-accent-dark;
+            }
+            .card {
+                @apply bg-light-card-bg p-8 rounded-xl shadow-sm border border-light-border transition-all duration-300 hover:shadow-md;
+            }
+            .dark .card {
+                @apply bg-dark-card-bg border-dark-border;
+            }
+            .btn-primary {
+                @apply inline-flex items-center px-8 py-3 rounded-full text-lg transition duration-300;
+                @apply bg-accent text-white hover:bg-accent-dark;
+                font-family: 'Parisienne', cursive;
+                font-size: 1.5rem;
+                letter-spacing: 1px;
+                box-shadow: 0 4px 6px rgba(212,165,154,0.1);
+            }
+            .btn-secondary {
+                @apply inline-flex items-center px-8 py-3 rounded-full text-lg font-semibold transition duration-300 shadow-lg;
+                @apply bg-light-card-bg text-accent border border-accent hover:bg-accent hover:text-white;
+            }
+            .dark .btn-secondary {
+                @apply bg-dark-card-bg text-accent border border-accent hover:bg-accent hover:text-white;
+            }
+            .skill-tag {
+                @apply bg-light-border text-light-secondary-text text-sm font-medium px-4 py-2 rounded-full transition-colors duration-300 hover:bg-accent hover:text-white;
+            }
+            .dark .skill-tag {
+                @apply bg-dark-border text-dark-secondary-text hover:bg-accent hover:text-white;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-light-card-bg dark:bg-dark-card-bg shadow-md fixed w-full z-50 transition-colors duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-accent hover:text-accent-dark transition-colors duration-300">Sheena A.</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-light-secondary-text dark:text-dark-secondary-text hover:text-accent dark:hover:text-accent transition-colors duration-300 font-medium">About</a>
+                <a href="#experience" class="text-light-secondary-text dark:text-dark-secondary-text hover:text-accent dark:hover:text-accent transition-colors duration-300 font-medium">Experience</a>
+                <a href="#skills" class="text-light-secondary-text dark:text-dark-secondary-text hover:text-accent dark:hover:text-accent transition-colors duration-300 font-medium">Skills</a>
+                <a href="#education" class="text-light-secondary-text dark:text-dark-secondary-text hover:text-accent dark:hover:text-accent transition-colors duration-300 font-medium">Education</a>
+                <a href="#certifications" class="text-light-secondary-text dark:text-dark-secondary-text hover:text-accent dark:hover:text-accent transition-colors duration-300 font-medium">Certifications</a>
+                <a href="#contact" class="text-light-secondary-text dark:text-dark-secondary-text hover:text-accent dark:hover:text-accent transition-colors duration-300 font-medium">Contact</a>
+                <!-- Dark Mode Toggle -->
+                <button id="theme-toggle" class="p-2 rounded-full bg-light-border dark:bg-dark-border text-light-secondary-text dark:text-dark-secondary-text hover:bg-light-text hover:text-light-card-bg dark:hover:bg-dark-text dark:hover:text-dark-card-bg transition-colors duration-300">
+                    <svg id="theme-toggle-light-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M3 12H2m15.325-7.757l-.707-.707M6.343 17.657l-.707.707M16.95 16.95l.707.707M6.343 6.343l-.707-.707M12 18a6 6 0 100-12 6 6 0 000 12z"></path></svg>
+                    <svg id="theme-toggle-dark-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+            </div>
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="mobile-menu-button" class="md:hidden text-light-secondary-text dark:text-dark-secondary-text hover:text-accent dark:hover:text-accent focus:outline-none transition-colors duration-300">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-light-card-bg dark:bg-dark-card-bg shadow-lg transition-colors duration-300">
+            <a href="#about" class="block px-6 py-3 text-light-secondary-text dark:text-dark-secondary-text hover:bg-light-border dark:hover:bg-dark-border hover:text-accent dark:hover:text-accent transition-colors duration-300 font-medium">About</a>
+            <a href="#experience" class="block px-6 py-3 text-light-secondary-text dark:text-dark-secondary-text hover:bg-light-border dark:hover:bg-dark-border hover:text-accent dark:hover:text-accent transition-colors duration-300 font-medium">Experience</a>
+            <a href="#skills" class="block px-6 py-3 text-light-secondary-text dark:text-dark-secondary-text hover:bg-light-border dark:hover:bg-dark-border hover:text-accent dark:hover:text-accent transition-colors duration-300 font-medium">Skills</a>
+            <a href="#education" class="block px-6 py-3 text-light-secondary-text dark:text-dark-secondary-text hover:bg-light-border dark:hover:bg-dark-border hover:text-accent dark:hover:text-accent transition-colors duration-300 font-medium">Education</a>
+            <a href="#certifications" class="block px-6 py-3 text-light-secondary-text dark:text-dark-secondary-text hover:bg-light-border dark:hover:bg-dark-border hover:text-accent dark:hover:text-accent transition-colors duration-300 font-medium">Certifications</a>
+            <a href="#contact" class="block px-6 py-3 text-light-secondary-text dark:text-dark-secondary-text hover:bg-light-border dark:hover:bg-dark-border hover:text-accent dark:hover:text-accent transition-colors duration-300 font-medium">Contact</a>
+            <div class="px-6 py-3 flex justify-center">
+                <button id="mobile-theme-toggle" class="p-2 rounded-full bg-light-border dark:bg-dark-border text-light-secondary-text dark:text-dark-secondary-text hover:bg-light-text hover:text-light-card-bg dark:hover:bg-dark-text dark:hover:text-dark-card-bg transition-colors duration-300">
+                    <svg id="mobile-theme-toggle-light-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h1M3 12H2m15.325-7.757l-.707-.707M6.343 17.657l-.707.707M16.95 16.95l.707.707M6.343 6.343l-.707-.707M12 18a6 6 0 100-12 6 6 0 000 12z"></path></svg>
+                    <svg id="mobile-theme-toggle-dark-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center py-24 md:py-32 text-center px-6 bg-light-bg dark:bg-dark-bg transition-colors duration-300 relative">
+        <div class="absolute inset-0 opacity-20">
+            <svg viewBox="0 0 1000 500" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                <!-- Simple minimalist workstation illustration -->
+                <rect x="200" y="300" width="600" height="20" rx="2" fill="#D4A59A"/>
+                <rect x="300" y="240" width="20" height="80" rx="2" fill="#D4A59A"/>
+                <rect x="480" y="240" width="20" height="80" rx="2" fill="#D4A59A"/>
+                <rect x="350" y="220" width="300" height="20" rx="2" fill="#D4A59A"/>
+                <rect x="420" y="170" width="160" height="50" rx="2" fill="#E2C2C2"/>
+                <circle cx="455" cy="190" r="8" fill="#FFF5F5"/>
+                <circle cx="545" cy="190" r="8" fill="#FFF5F5"/>
+                <path d="M450 170L400 150" stroke="#E2C2C2" stroke-width="2"/>
+                <path d="M550 170L600 150" stroke="#E2C2C2" stroke-width="2"/>
+            </svg>
+        </div>
+        <div class="max-w-4xl mx-auto animate-fade-in">
+            <h1 class="text-5xl md:text-7xl font-dancing-script leading-tight mb-4 text-light-text dark:text-dark-text animate-slide-up tracking-widest">Sheena Krisitne Artugue</h1>
+            <p class="text-xl md:text-3xl font-light mb-6 text-light-secondary-text dark:text-dark-secondary-text animate-slide-up delay-100">💻 Virtual Assistant | Admin Support | Ex-Nurse with Caregiving Experience</p>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto text-light-secondary-text dark:text-dark-secondary-text animate-slide-up delay-200">Empowering healthcare providers by relieving administrative burdens, enabling them to focus on patient care.</p>
+            <div class="mt-12 flex justify-center space-x-4 animate-slide-up delay-300">
+                <a href="#contact" class="btn-primary">Get in Touch</a>
+                <a href="#about" class="btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-24 md:py-32 px-6 bg-light-card-bg dark:bg-dark-card-bg transition-colors duration-300">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="text-4xl md:text-5xl font-script italic text-center mb-16 relative text-light-text dark:text-dark-text animate-fade-in tracking-wider">About Me</h2>
+            <div class="text-lg leading-relaxed text-light-secondary-text dark:text-dark-secondary-text animate-slide-up">
+                <p class="mb-6">With over 9 years of experience as a registered nurse, I now focus on supporting healthcare professionals as a Virtual Assistant. My background includes managing patient care plans, fostering clear communication with physicians, and ensuring accurate medical record organization. These skills translate seamlessly into handling administrative tasks like appointment scheduling, email management, and calendar coordination.</p>
+                <p class="mb-6">Dedicated to maintaining data privacy and confidentiality, I am currently enhancing my expertise in HIPAA compliance and EHR systems. My mission is to empower healthcare providers by relieving their administrative burdens, enabling them to focus on patient care. Known for my reliability and adaptability, I strive to deliver organized, secure, and empathetic support tailored to the unique needs of the healthcare field.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-24 md:py-32 px-6 bg-light-bg dark:bg-dark-bg transition-colors duration-300">
+        <div class="container mx-auto max-w-5xl">
+            <h2 class="section-heading text-light-text dark:text-dark-text animate-fade-in">Experience</h2>
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-light-border dark:bg-dark-border hidden md:block"></div>
+
+                <!-- Experience Item 1: Nurse (Self-Employed) -->
+                <div class="mb-16 flex flex-col md:flex-row items-center md:justify-between w-full animate-slide-up">
+                    <div class="md:w-5/12 text-right md:pr-12 mb-6 md:mb-0">
+                        <h3 class="text-2xl font-semibold text-accent">Nurse</h3>
+                        <p class="text-light-secondary-text dark:text-dark-secondary-text">Self-Employed</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">2015 - 2024 (9 yrs)</p>
+                    </div>
+                    <div class="md:w-1/12 hidden md:block">
+                        <div class="w-4 h-4 bg-accent rounded-full absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2 border-2 border-light-bg dark:border-dark-bg"></div>
+                    </div>
+                    <div class="md:w-5/12 card">
+                        <p class="text-light-secondary-text dark:text-dark-secondary-text">Delivered full-time care to a chronically ill family member for 9 years. Managed daily medication administration, wound care, and health monitoring. Coordinated appointments and communicated directly with physicians. Maintained organized medical records and followed long-term care plans. Practiced consistent confidentiality, empathy, and hands-on nursing duties.</p>
+                    </div>
+                </div>
+
+                <!-- Experience Item 2: Nurse Intern (Medical Center Manila) -->
+                <div class="mb-16 flex flex-col md:flex-row-reverse items-center md:justify-between w-full animate-slide-up delay-100">
+                    <div class="md:w-5/12 text-left md:pl-12 mb-6 md:mb-0">
+                        <h3 class="text-2xl font-semibold text-accent">Nurse Intern</h3>
+                        <p class="text-light-secondary-text dark:text-dark-secondary-text">Medical Center Manila</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Oct 2006 - Jan 2007 (4 mos)</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Malate, Manila · On-site</p>
+                    </div>
+                    <div class="md:w-1/12 hidden md:block">
+                        <div class="w-4 h-4 bg-accent rounded-full absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2 border-2 border-light-bg dark:border-dark-bg"></div>
+                    </div>
+                    <div class="md:w-5/12 card">
+                        <p class="text-light-secondary-text dark:text-dark-secondary-text">Gained practical experience in a hospital setting, assisting with patient care and learning hospital protocols.</p>
+                    </div>
+                </div>
+
+                <!-- Experience Item 3: Emergency Room Nurse (Taguig-Pateros District Hospital) -->
+                <div class="mb-16 flex flex-col md:flex-row items-center md:justify-between w-full animate-slide-up delay-200">
+                    <div class="md:w-5/12 text-right md:pr-12 mb-6 md:mb-0">
+                        <h3 class="text-2xl font-semibold text-accent">Emergency Room Nurse</h3>
+                        <p class="text-light-secondary-text dark:text-dark-secondary-text">Taguig-Pateros District Hospital</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Aug 2005 - Sep 2005 (2 mos)</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Taguig, National Capital Region, Philippines · On-site</p>
+                    </div>
+                    <div class="md:w-1/12 hidden md:block">
+                        <div class="w-4 h-4 bg-accent rounded-full absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2 border-2 border-light-bg dark:border-dark-bg"></div>
+                    </div>
+                    <div class="md:w-5/12 card">
+                        <p class="text-light-secondary-text dark:text-dark-secondary-text">Internship focused on emergency care, assisting with critical patient situations and rapid assessment.</p>
+                    </div>
+                </div>
+
+                <!-- Experience Item 4: Nurse Intern (Tondo Medical Center) -->
+                <div class="mb-16 flex flex-col md:flex-row-reverse items-center md:justify-between w-full animate-slide-up delay-300">
+                    <div class="md:w-5/12 text-left md:pl-12 mb-6 md:mb-0">
+                        <h3 class="text-2xl font-semibold text-accent">Nurse Intern</h3>
+                        <p class="text-light-secondary-text dark:text-dark-secondary-text">Tondo Medical Center</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Jul 2005 - Aug 2005 (2 mos)</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Tondo, Manila · On-site</p>
+                    </div>
+                    <div class="md:w-1/12 hidden md:block">
+                        <div class="w-4 h-4 bg-accent rounded-full absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2 border-2 border-light-bg dark:border-dark-bg"></div>
+                    </div>
+                    <div class="md:w-5/12 card">
+                        <p class="text-light-secondary-text dark:text-dark-secondary-text">Participated in various nursing duties and patient care activities in a community hospital setting.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 md:py-32 px-6 bg-light-card-bg dark:bg-dark-card-bg transition-colors duration-300">
+        <div class="container mx-auto max-w-4xl">
+            <h2 class="section-heading text-light-text dark:text-dark-text animate-fade-in">Skills</h2>
+            <div class="flex flex-wrap justify-center gap-4 animate-slide-up">
+                <span class="skill-tag">Healthcare Management</span>
+                <span class="skill-tag">Data Privacy</span>
+                <span class="skill-tag">Communication & Interpersonal Skills</span>
+                <span class="skill-tag">Time Management & Organization</span>
+                <span class="skill-tag">Patient Care</span>
+                <span class="skill-tag">Physician Relations</span>
+                <span class="skill-tag">Inpatient Care</span>
+                <span class="skill-tag">Nursing Education</span>
+                <span class="skill-tag">Basic Life Support (BLS)</span>
+                <span class="skill-tag">Health Information Management</span>
+                <span class="skill-tag">Acute Care</span>
+                <span class="skill-tag">Pharmacy</span>
+                <span class="skill-tag">Computer Literacy</span>
+                <span class="skill-tag">Healthcare</span>
+                <span class="skill-tag">Working with Physicians</span>
+                <span class="skill-tag">Patient Counseling</span>
+                <span class="skill-tag">Nursing</span>
+                <span class="skill-tag">Data Entry</span>
+                <span class="skill-tag">Interpersonal Communication</span>
+                <span class="skill-tag">Written Communication</span>
+                <span class="skill-tag">Patient Advocacy</span>
+                <span class="skill-tag">Confidentiality</span>
+                <span class="skill-tag">Nursing Research</span>
+                <span class="skill-tag">Compassion</span>
+                <span class="skill-tag">Chronic Care</span>
+                <span class="skill-tag">Managed Care</span>
+                <span class="skill-tag">Tutorials</span>
+                <span class="skill-tag">Lifelong Learning</span>
+                <span class="skill-tag">High Level Of Accuracy</span>
+                <span class="skill-tag">Appointment Scheduling</span>
+                <span class="skill-tag">Patient Communications</span>
+                <span class="skill-tag">Remote Medicine</span>
+                <span class="skill-tag">Working with Veterans</span>
+                <span class="skill-tag">Long-Term Care Nursing</span>
+                <span class="skill-tag">Medical Terminology</span>
+                <span class="skill-tag">Organization Skills</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-24 md:py-32 px-6 bg-light-bg dark:bg-dark-bg transition-colors duration-300">
+        <div class="container mx-auto max-w-3xl">
+            <h2 class="section-heading text-light-text dark:text-dark-text animate-fade-in">Education</h2>
+            <div class="card animate-slide-up">
+                <h3 class="text-2xl font-semibold text-accent mb-2">Emilio Aguinaldo College</h3>
+                <p class="text-light-secondary-text dark:text-dark-secondary-text text-lg">Bachelor of Science, Registered Nursing/Registered Nurse</p>
+                <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">June 2003 - April 2007</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-24 md:py-32 px-6 bg-light-card-bg dark:bg-dark-card-bg transition-colors duration-300">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="section-heading text-light-text dark:text-dark-text animate-fade-in">Certifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-slide-up">
+
+                <!-- Philippine Nursing License -->
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Philippine Nursing License</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Professional Regulation Commission</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: June 2010 · Expires: August 2025</p>
+                </div>
+
+                <!-- Alison Certifications -->
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">An Introduction to the Human Body</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: July 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Basics of Motivational Interviewing</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: July 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Consent Training in Healthcare</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: July 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Fundamentals of Health and Safety in the Workplace</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: July 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Healthcare Administration Excellence: Skills for Success</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: July 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Infection Control in Health Care</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: July 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Infection Prevention and Control Masterclass</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: July 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Mastering Revenue Cycle Management in Healthcare</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: July 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Mental Health in Nursing</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: July 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Person-Centred Care (PCC) in Nursing</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: July 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">A Comprehensive Guide to Medical Coding</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: June 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Diploma in Medical Secretary</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: June 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Diploma in Nursing and Patient Care</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: June 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Diploma in Understanding Medical Terminologies</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: June 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Fundamentals of HIPAA Law and Its Privacy Rules</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: June 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Hand Hygiene Steps, Practices and Strategies</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: June 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Introduction to Medical Terminology</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: June 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Management of Acute Ischemic Stroke</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: June 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Medical Office Administration</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: June 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Medical Receptionist Training</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: June 2025</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-accent mb-2">Supporting Individuals with Intellectual Disabilities and Mental Illness</h3>
+                    <p class="text-light-secondary-text dark:text-dark-secondary-text"><strong>Authority:</strong> Alison</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mt-1">Issued: June 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 md:py-32 px-6 bg-light-bg dark:bg-dark-bg transition-colors duration-300">
+        <div class="container mx-auto max-w-3xl text-center">
+            <h2 class="section-heading text-light-text dark:text-dark-text animate-fade-in">Get in Touch</h2>
+            <p class="text-lg mb-12 text-light-secondary-text dark:text-dark-secondary-text animate-slide-up">I'm always open to new opportunities and collaborations. Feel free to reach out through any of these channels:</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto animate-slide-up delay-100">
+                <div class="flex flex-col items-center">
+                    <svg class="w-8 h-8 text-accent mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    <a href="mailto:artuguesheenakristine@gmail.com" class="text-accent hover:text-accent-dark transition-colors">artuguesheenakristine@gmail.com</a>
+                </div>
+                <div class="flex flex-col items-center">
+                    <svg class="w-8 h-8 text-accent mb-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"></path>
+                    </svg>
+                    <a href="https://www.linkedin.com/in/sheena-krisitne-artugue-643a52356/" target="_blank" rel="noopener noreferrer" class="text-accent hover:text-accent-dark transition-colors">LinkedIn Profile</a>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mt-8 animate-slide-up delay-200">
+                <a href="mailto:artuguesheenakristine@gmail.com" class="btn-primary">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                    Email Me
+                </a>
+                <a href="https://www.linkedin.com/in/sheena-krisitne-artugue-643a52356/" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.381 1.11-2.5 2.48-2.5s2.48 1.119 2.48 2.5zM.02 7.25h4.95v16.75h-4.95zM24 12.97c0-2.48-1.27-4.38-3.91-4.38-1.81 0-2.79 1.01-3.29 1.96h-.07v-1.68h-4.73v16.75h4.95v-8.8c0-.47.03-.94.17-1.27.32-.74 1.04-1.51 2.26-1.51 1.62 0 2.83 1.24 2.83 3.28v8.3h4.95z"></path></svg>
+                    LinkedIn Profile
+                </a>
+            </div>
+            <p class="mt-16 text-gray-500 dark:text-gray-400 text-sm">&copy; 2024 Sheena Krisitne Artugue. All rights reserved.</p>
+        </div>
+    </section>
+
+    <!-- JavaScript for Mobile Menu and Dark Mode Toggle -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Dark Mode Toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const mobileThemeToggleBtn = document.getElementById('mobile-theme-toggle');
+        const htmlElement = document.documentElement;
+
+        const lightIcon = document.getElementById('theme-toggle-light-icon');
+        const darkIcon = document.getElementById('theme-toggle-dark-icon');
+        const mobileLightIcon = document.getElementById('mobile-theme-toggle-light-icon');
+        const mobileDarkIcon = document.getElementById('mobile-theme-toggle-dark-icon');
+
+        // Function to set theme
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                htmlElement.classList.add('dark');
+                lightIcon.classList.remove('hidden');
+                darkIcon.classList.add('hidden');
+                mobileLightIcon.classList.remove('hidden');
+                mobileDarkIcon.classList.add('hidden');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                htmlElement.classList.remove('dark');
+                lightIcon.classList.add('hidden');
+                darkIcon.classList.remove('hidden');
+                mobileLightIcon.classList.add('hidden');
+                mobileDarkIcon.classList.remove('hidden');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check for saved theme preference on load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            // Default to system preference if no saved theme
+            setTheme('dark');
+        } else {
+            setTheme('light'); // Default to light if no preference
+        }
+
+        // Toggle theme on button click
+        themeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+
+        mobileThemeToggleBtn.addEventListener('click', () => {
+            if (htmlElement.classList.contains('dark')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    entry.target.classList.add('animate-slide-up'); // Apply slide-up as well
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-fade-in, .animate-slide-up').forEach(element => {
+            observer.observe(element);
+        });
+
+    </script>
+</body>
+</html>
